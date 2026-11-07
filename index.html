@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0f17" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="单词卡" />
+    <meta name="description" content="把 DeepSeek 里问过的单词和长难句做成卡片，随时复习。" />
+    <link rel="icon" href="./icons/icon-192.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <title>DeepSeek 单词卡</title>
+    <script type="module" crossorigin src="./assets/index-Dc8jE2dN.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CgEpwmQF.css">
+  <link rel="manifest" href="./manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 首屏先按上次保存的外观上色，避免刷新时闪一下默认深色；IndexedDB 里的设置随后会覆盖。
+      try {
+        var saved = JSON.parse(localStorage.getItem('dscard.appearance') || '{}')
+        if (saved.theme === 'paper' || saved.theme === 'dark') {
+          document.documentElement.dataset.theme = saved.theme
+        }
+        if (saved.font === 'serif' || saved.font === 'kai' || saved.font === 'sans') {
+          document.documentElement.dataset.font = saved.font
+        }
+        if (saved.scale === 'sm' || saved.scale === 'md' || saved.scale === 'lg') {
+          document.documentElement.dataset.scale = saved.scale
+        }
+      } catch (e) {}
+    </script>
+  </body>
+</html>
